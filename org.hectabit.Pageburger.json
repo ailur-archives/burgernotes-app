@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
-  "command": "pageburger",
+  "command": "/app/bin/pageburger",
   "modules": [
     {
       "name": "PageBurger",
@@ -16,7 +16,7 @@
         }
       ],
       "build-commands": [
-        "./install.sh"
+        "make install DESTDIR=/app/bin/"
       ]
     }
   ]
