@@ -13,8 +13,9 @@ TARGET = pageburger
 
 .PHONY: all clean
 
-all: $(TARGET)
+all: pageburger
 
+pageburger: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(LIBS)
 
@@ -24,6 +25,6 @@ $(TARGET): $(OBJS)
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-install:
+install: pageburger
 	mkdir -p $(DESTDIR)
 	cp pageburger $(DESTDIR)
