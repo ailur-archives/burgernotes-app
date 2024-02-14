@@ -12,7 +12,7 @@
         {
           "type": "git",
           "url": "https://centrifuge.hectabit.org/HectaBit/PageBurger-App.git",
-          "branch": "master"
+          "branch": "main"
         }
       ],
       "build-commands": [
