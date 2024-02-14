@@ -16,7 +16,7 @@
         }
       ],
       "build-commands": [
-        "make"
+        "./install.sh"
       ]
     }
   ]
