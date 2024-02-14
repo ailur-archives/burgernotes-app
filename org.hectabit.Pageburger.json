@@ -1,0 +1,23 @@
+{
+  "id": "org.hectabit.PageBurger",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "40",
+  "sdk": "org.gnome.Sdk",
+  "command": "pageburger",
+  "modules": [
+    {
+      "name": "PageBurger",
+      "buildsystem": "simple",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://centrifuge.hectabit.org/HectaBit/PageBurger-App.git",
+          "branch": "master"
+        }
+      ],
+      "build-commands": [
+        "make"
+      ]
+    }
+  ]
+}
