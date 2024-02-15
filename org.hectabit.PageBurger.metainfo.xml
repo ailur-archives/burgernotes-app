@@ -16,7 +16,7 @@
 
   <description>
     <p>
-      Simple and private noting service that syncs across all devices
+      PageBurger is a simple, private and easy to use noting service. It syncs to every logged-in device instantly, and can be exported into common formats as well!
     </p>
   </description>
 
@@ -30,7 +30,7 @@
     </screenshot>
   </screenshots>
 
-  <icon type="stock">pageburger</icon>
+  <icon type="stock">org.hectabit.PageBurger</icon>
 
   <categories>
     <category>Office</category>
@@ -40,4 +40,5 @@
   <provides>
     <binary>pageburger</binary>
   </provides>
+  <content_rating type="oars-1.1" />
 </component>
