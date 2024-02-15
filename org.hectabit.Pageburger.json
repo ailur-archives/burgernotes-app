@@ -19,5 +19,10 @@
         "make install DESTDIR=/app/bin/"
       ]
     }
+  ],
+  "finish-args": [
+    "--share=network",
+    "--socket=x11",
+    "--socket=wayland"
   ]
 }
