@@ -2,6 +2,6 @@
 Type=Application
 Name=PageBurger
 Comment=Simple, private noting service
-Icon=pageburger
+Icon=org.hectabit.PageBurger
 Exec=pageburger
 Categories=Office;WordProcessor
