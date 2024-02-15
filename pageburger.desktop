@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=PageBurger
+Comment=Simple, private noting service
+Icon=pageburger
+Exec=pageburger
+Categories=Office;WordProcessor

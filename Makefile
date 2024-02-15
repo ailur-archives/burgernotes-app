@@ -1,5 +1,6 @@
 CC = gcc
 DESTDIR = /usr/bin
+SHAREDIR = /usr/share
 CFLAGS = -Wall -Wextra -g
 PKG_CONFIG = pkg-config
 GTK_LIBS = $(shell $(PKG_CONFIG) --libs gtk+-3.0)
@@ -28,3 +29,8 @@ clean:
 install: pageburger
 	mkdir -p $(DESTDIR)
 	cp pageburger $(DESTDIR)
+	mkdir -p $(SHAREDIR)/icons/hicolor/512x512/apps/
+	mkdir -p $(SHAREDIR)/applications/
+	cp pageburger.png $(SHAREDIR)/icons/hicolor/512x512/apps/
+	cp pageburger.desktop $(SHAREDIR)/applications/
+	cp org.hectabit.PageBurger.metainfo.xml $(SHAREDIR)/metainfo/

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.hectabit.PageBurger</id>
+
+  <name>PageBurger</name>
+  <summary>Simple, private noting service</summary>
+
+  <metadata_license>MIT</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <description>
+    <p>
+      Simple and private noting service that syncs across all devices
+    </p>
+  </description>
+
+  <launchable type="desktop-id">org.hectabit.PageBurger.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.hectabit.org/assets/img/screenshot.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.hectabit.org/assets/img/screenshot2.png</image>
+    </screenshot>
+  </screenshots>
+
+  <icon type="stock">pageburger</icon>
+
+  <categories>
+    <category>Office</category>
+    <category>WordProcessor</category>
+  </categories>
+
+  <provides>
+    <binary>pageburger</binary>
+  </provides>
+</component>
