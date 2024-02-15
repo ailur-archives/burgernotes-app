@@ -3,7 +3,7 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
-  "command": "/app/bin/pageburger",
+  "command": "pageburger",
   "modules": [
     {
       "name": "PageBurger",
@@ -23,6 +23,6 @@
   "finish-args": [
     "--share=network",
     "--socket=x11",
-    "--socket=wayland"
+    "--share=ipc"
   ]
 }
