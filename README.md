@@ -1,3 +1,3 @@
 # PageBurger-App
 
-Native electron app for PageBurger
+Native desktop app for PageBurger
