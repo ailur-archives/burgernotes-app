@@ -29,9 +29,9 @@ clean:
 install: pageburger
 	mkdir -p $(DESTDIR)
 	cp pageburger $(DESTDIR)
-	mkdir -p $(SHAREDIR)/icons/hicolor/symbolic/apps/
+	mkdir -p $(SHAREDIR)/icons/hicolor/scalable/apps/
 	mkdir -p $(SHAREDIR)/applications/
 	mkdir -p $(SHAREDIR)/metainfo/
-	cp org.hectabit.PageBurger.svg $(SHAREDIR)/icons/hicolor/symbolic/apps/
+	cp org.hectabit.PageBurger.svg $(SHAREDIR)/icons/hicolor/scalable/apps/
 	cp org.hectabit.PageBurger.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.PageBurger.metainfo.xml $(SHAREDIR)/metainfo/
