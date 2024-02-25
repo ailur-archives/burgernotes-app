@@ -32,6 +32,6 @@ install: pageburger
 	mkdir -p $(SHAREDIR)/icons/hicolor/512x512/apps/
 	mkdir -p $(SHAREDIR)/applications/
 	mkdir -p $(SHAREDIR)/metainfo/
-	cp org.hectabit.PageBurger.png $(SHAREDIR)/icons/hicolor/512x512/apps/
+	cp org.hectabit.PageBurger.svg $(SHAREDIR)/icons/hicolor/symbolic/apps/
 	cp org.hectabit.PageBurger.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.PageBurger.metainfo.xml $(SHAREDIR)/metainfo/
