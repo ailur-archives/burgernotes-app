@@ -17,7 +17,7 @@
 
   <description>
     <p>
-      PageBurger is a simple, private and easy to use noting service. It syncs to every logged-in device instantly, and can be exported into common formats as well!
+      PageBurger is a simple, private-by-default and easy to use noting service. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access it.
     </p>
   </description>
 
@@ -30,6 +30,9 @@
       <image>https://www.hectabit.org/assets/img/screenshot2.png</image>
     </screenshot>
   </screenshots>
+
+  <url type="homepage">http://notes.hectabit.org/</url>
+  <project_group>HectaBit</project_group>
 
   <categories>
     <category>Office</category>
