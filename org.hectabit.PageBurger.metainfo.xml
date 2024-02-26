@@ -24,10 +24,10 @@
   <launchable type="desktop-id">org.hectabit.PageBurger.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://www.hectabit.org/assets/img/screenshot.png</image>
+      <image>https://www.hectabit.org/assets/img/pscreenshot.png</image>
     </screenshot>
     <screenshot>
-      <image>https://www.hectabit.org/assets/img/screenshot2.png</image>
+      <image>https://www.hectabit.org/assets/img/pscreenshot2.png</image>
     </screenshot>
   </screenshots>
 
@@ -44,8 +44,13 @@
   </provides>
   <content_rating type="oars-1.1" />
 
+  <branding>
+    <color type="primary" scheme_preference="light">#ffffff</color>
+    <color type="primary" scheme_preference="dark">#202124</color>
+  </branding>
+
   <releases>
-  <release version="1.0-1" date="2024-02-16">
+  <release version="1.0-1" date="2024-02-25">
     <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0</url>
       <description>
         <p>Release 1.0</p>
