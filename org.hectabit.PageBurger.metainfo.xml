@@ -3,7 +3,7 @@
   <id>org.hectabit.PageBurger</id>
 
   <name>PageBurger</name>
-  <summary>Simple, private noting service</summary>
+  <summary>Simple, private notes app</summary>
   <developer_name>Arzumify</developer_name>
 
   <metadata_license>MIT</metadata_license>
@@ -17,7 +17,7 @@
 
   <description>
     <p>
-      PageBurger is a simple, private-by-default and easy to use noting service. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access it.
+      PageBurger is a simple, private-by-default and easy to use notes app. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access them.
     </p>
   </description>
 
