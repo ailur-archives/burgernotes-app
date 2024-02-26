@@ -19,7 +19,15 @@ int main(int argc, char *argv[]) {
     WebKitWebView *webview = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
     // Load a web page
-    webkit_web_view_load_uri(webview, "https://notes.hectabit.org/app");
+    const char *filename = "/app/";
+
+    if (access(filename, F_OK) != -1) {
+        printf("Flatpak found!\n");
+        webkit_web_view_load_uri(webview, "file:/\/\/app/share/pageburger/index.html");
+    } else {
+        printf("Flatpak not found, loading regular\n");
+        webkit_web_view_load_uri(webview, "file:/\/\/usr/share/pageburger/index.html");
+    }
 
     // Add the web view to the window
     gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(webview));

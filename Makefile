@@ -35,3 +35,4 @@ install: pageburger
 	cp org.hectabit.PageBurger.svg $(SHAREDIR)/icons/hicolor/scalable/apps/
 	cp org.hectabit.PageBurger.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.PageBurger.metainfo.xml $(SHAREDIR)/metainfo/
+	cp -r website $(SHAREDIR)/pageburger
