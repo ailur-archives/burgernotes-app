@@ -3,7 +3,7 @@
   <id>org.hectabit.PageBurger</id>
 
   <name>PageBurger</name>
-  <summary>Simple, private noting service</summary>
+  <summary>Simple, private notes app</summary>
   <developer_name>Arzumify</developer_name>
 
   <metadata_license>MIT</metadata_license>
@@ -17,17 +17,17 @@
 
   <description>
     <p>
-      PageBurger is a simple, private-by-default and easy to use noting service. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access it.
+      PageBurger is a simple, private-by-default and easy to use notes app. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access them.
     </p>
   </description>
 
   <launchable type="desktop-id">org.hectabit.PageBurger.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://www.hectabit.org/assets/img/screenshot.png</image>
+      <image>https://www.hectabit.org/assets/img/pscreenshot.png</image>
     </screenshot>
     <screenshot>
-      <image>https://www.hectabit.org/assets/img/screenshot2.png</image>
+      <image>https://www.hectabit.org/assets/img/pscreenshot2.png</image>
     </screenshot>
   </screenshots>
 
@@ -44,11 +44,34 @@
   </provides>
   <content_rating type="oars-1.1" />
 
+  <branding>
+    <color type="primary" scheme_preference="light">#ffffff</color>
+    <color type="primary" scheme_preference="dark">#202124</color>
+  </branding>
+
   <releases>
-  <release version="1.0-1" date="2024-02-16">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0</url>
+  <release version="1.0-3" date="2024-02-26">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-3</url>
       <description>
-        <p>Release 1.0</p>
+        <p>Release 1.0-3</p>
+          <ul>
+            <li>Updated metainfo</li>
+          </ul>
+      </description>
+    </release>
+  <release version="1.0-2" date="2024-02-26">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-2</url>
+      <description>
+        <p>Release 1.0-2</p>
+          <ul>
+            <li>Updated metainfo</li>
+          </ul>
+      </description>
+    </release>
+  <release version="1.0-1" date="2024-02-25">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-1</url>
+      <description>
+        <p>Release 1.0-1</p>
           <ul>
             <li>Updated metainfo</li>
             <li>Updated app logo</li>
