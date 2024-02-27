@@ -28,11 +28,13 @@ clean:
 
 install: pageburger
 	mkdir -p $(DESTDIR)
-	cp pageburger $(DESTDIR)
+	mkdir -p $(SHAREDIR)/pageburger
+	cp pageburger $(SHAREDIR)/pageburger/
+	ln -sf $(SHAREDIR)/pageburger/pageburger $(DESTDIR)/pageburger
 	mkdir -p $(SHAREDIR)/icons/hicolor/scalable/apps/
 	mkdir -p $(SHAREDIR)/applications/
 	mkdir -p $(SHAREDIR)/metainfo/
 	cp org.hectabit.PageBurger.svg $(SHAREDIR)/icons/hicolor/scalable/apps/
 	cp org.hectabit.PageBurger.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.PageBurger.metainfo.xml $(SHAREDIR)/metainfo/
-	cp -r website $(SHAREDIR)/pageburger
+	cp -r website $(SHAREDIR)/pageburger/website

@@ -1,5 +1,7 @@
 #include <webkit2/webkit2.h>
 #include <gtk/gtk.h>
+#include <unistd.h>
+#include <libgen.h>
 
 static void cookie_changed_cb(WebKitCookieManager *cookie_manager, GParamSpec *pspec, gpointer user_data) {
     // Handle cookie changes here
@@ -18,16 +20,24 @@ int main(int argc, char *argv[]) {
     // Create a web view widget
     WebKitWebView *webview = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
-    // Load a web page
-    const char *filename = "/app/";
-
-    if (access(filename, F_OK) != -1) {
-        printf("Flatpak found!\n");
-        webkit_web_view_load_uri(webview, "file:/\/\/app/share/pageburger/index.html");
-    } else {
-        printf("Flatpak not found, loading regular\n");
-        webkit_web_view_load_uri(webview, "file:/\/\/usr/share/pageburger/index.html");
+    // Get the path of the executable
+    char exe_path[1024];
+    ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path)-1);
+    if (len == -1) {
+        perror("readlink");
+        return EXIT_FAILURE;
     }
+    exe_path[len] = '\0';
+
+    // Get the directory containing the executable
+    char *exe_dir = dirname(exe_path);
+
+    // Construct the path to the website directory
+    char website_path[1024];
+    snprintf(website_path, sizeof(website_path), "file:/\/%s/website/app/index.html", exe_dir);
+
+    // Load the URI
+    webkit_web_view_load_uri(webview, website_path);
 
     // Add the web view to the window
     gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(webview));

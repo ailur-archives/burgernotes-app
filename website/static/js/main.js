@@ -203,7 +203,7 @@ function updateUserInfo() {
             secretKey: secretkey
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
         .then((response) => response)
@@ -214,7 +214,7 @@ function updateUserInfo() {
                     closeErrorButton.classList.add("hidden")
                     usernameBox.innerText = ""
                     setTimeout(function () {
-                        window.location.replace("https://notes.hectabit.org/api/logout")
+                        window.location.replace("../logout/index.html")
                     }, 2500);
                 } else {
                     let responseData = await response.json()
@@ -236,7 +236,7 @@ usernameBox.addEventListener("click", (event) => {
     updateUserInfo()
 });
 logOutButton.addEventListener("click", (event) => {
-    window.location.replace("https://notes.hectabit.org/api/logout")
+    window.location.replace("../logout/index.html")
 });
 exitThing.addEventListener("click", (event) => {
     optionsDiv.classList.add("hidden")
@@ -250,13 +250,13 @@ deleteMyAccountButton.addEventListener("click", (event) => {
                 secretKey: secretkey
             }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-Type": "application/json; charset=UTF-8"
             }
         })
             .then((response) => response)
             .then((response) => {
                 if (response.status == 200) {
-                    window.location.href = "https://notes.hectabit.org/api/logout"
+                    window.location.href = "../logout/index.html"
                 } else {
                     displayError("Failed to delete account (HTTP error code " + response.status + ")")
                 }
@@ -273,7 +273,7 @@ sessionManagerButton.addEventListener("click", (event) => {
             secretKey: secretkey
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
         .then((response) => response)
@@ -295,15 +295,15 @@ sessionManagerButton.addEventListener("click", (event) => {
                     sessionText.title = responseData[i]["device"]
                     sessionRemoveButton.innerText = "x"
 
-                    sessionImage.src = "../static/svg/device_other.svg"
+                    sessionImage.src = "/static/svg/device_other.svg"
 
                     ua = responseData[i]["device"]
 
                     if (ua.includes("NT") || ua.includes("Linux")) {
-                        sessionImage.src = "../static/svg/device_computer.svg"
+                        sessionImage.src = "/static/svg/device_computer.svg"
                     }
                     if (ua.includes("iPhone" || ua.includes("Android") || ua.include ("iPod"))) {
-                        sessionImage.src = "../static/svg/device_smartphone.svg"
+                        sessionImage.src = "/static/svg/device_smartphone.svg"
                     }
 
                     sessionRemoveButton.addEventListener("click", (event) => {
@@ -314,13 +314,13 @@ sessionManagerButton.addEventListener("click", (event) => {
                                 sessionId: responseData[i]["id"]
                             }),
                             headers: {
-                                "Content-type": "application/json; charset=UTF-8"
+                                "Content-Type": "application/json; charset=UTF-8"
                             }
                         })
                             .then((response) => response)
                             .then((response) => {
                                 if (responseData[i]["thisSession"] == true) {
-                                    window.location.replace("https://notes.hectabit.org/api/logout")
+                                    window.location.replace("../logout/index.html")
                                 }
                             });
                         sessionElement.remove()
@@ -365,7 +365,7 @@ function selectNote(nameithink) {
             noteId: nameithink,
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
         .catch((error) => {
@@ -404,7 +404,7 @@ function selectNote(nameithink) {
                                     content: encryptedText,
                                 }),
                                 headers: {
-                                    "Content-type": "application/json; charset=UTF-8"
+                                    "Content-Type": "application/json; charset=UTF-8"
                                 }
                             })
                                 .then((response) => response)
@@ -431,7 +431,7 @@ function updateNotes() {
             secretKey: secretkey
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
         .then((response) => response)
@@ -466,7 +466,7 @@ function updateNotes() {
                                     noteId: responseData[i]["id"]
                                 }),
                                 headers: {
-                                    "Content-type": "application/json; charset=UTF-8"
+                                    "Content-Type": "application/json; charset=UTF-8"
                                 }
                             })
                                 .then((response) => response)
@@ -506,7 +506,7 @@ newNote.addEventListener("click", (event) => {
                     noteName: encryptedName,
                 }),
                 headers: {
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-Type": "application/json; charset=UTF-8"
                 }
             })
                 .catch((error) => {
@@ -541,7 +541,7 @@ function exportNotes() {
             secretKey: secretkey
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-Type": "application/json; charset=UTF-8"
         }
     })
         .then((response) => response)
@@ -601,7 +601,7 @@ removeBox.addEventListener("click", (event) => {
                 noteId: selectedNote
             }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-Type": "application/json; charset=UTF-8"
             }
         })
             .then((response) => response)

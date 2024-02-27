@@ -2,9 +2,9 @@
 <component type="desktop-application">
   <id>org.hectabit.PageBurger</id>
 
-  <name>PageBurger</name>
+  <name>Burgernotes</name>
   <summary>Simple, private notes app</summary>
-  <developer_name>Arzumify</developer_name>
+  <developer_name>Hectabit</developer_name>
 
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -50,6 +50,18 @@
   </branding>
 
   <releases>
+  <release version="1.1" date="2024-02-26">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.1</url>
+      <description>
+        <p>Release 1.1</p>
+          <ul>
+            <li>Make website local to prevent MITMs</li>
+            <li>Make icon smaller</li>
+            <li>Changed name</li>
+            <li>Fixed developer name</li>
+          </ul>
+      </description>
+    </release>
   <release version="1.0-3" date="2024-02-26">
     <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-3</url>
       <description>
