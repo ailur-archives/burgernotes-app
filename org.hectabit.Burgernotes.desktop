@@ -2,6 +2,6 @@
 Type=Application
 Name=Burgernotes
 Comment=Simple, private noting service
-Icon=org.hectabit.PageBurger
+Icon=org.hectabit.Burgernotes
 Exec=pageburger
 Categories=Office;WordProcessor
