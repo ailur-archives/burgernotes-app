@@ -37,4 +37,4 @@ install: burgernotes
 	cp org.hectabit.Burgernotes.svg $(SHAREDIR)/icons/hicolor/scalable/apps/
 	cp org.hectabit.Burgernotes.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.Burgernotes.metainfo.xml $(SHAREDIR)/metainfo/
-	cp -r website $(SHAREDIR)/Burgernotes/website
+	cp -r website $(SHAREDIR)/burgernotes/website
