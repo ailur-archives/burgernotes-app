@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.hectabit.PageBurger</id>
+  <id>org.hectabit.Burgernotes</id>
 
   <name>Burgernotes</name>
   <summary>Simple, private notes app</summary>
@@ -17,11 +17,11 @@
 
   <description>
     <p>
-      PageBurger is a simple, private-by-default and easy to use notes app. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access them.
+      Burgernotes is a simple, private-by-default and easy to use notes app. All your notes seamlessly sync across your devices, and are 100% end-to-end encrypted, so no one but you can access them.
     </p>
   </description>
 
-  <launchable type="desktop-id">org.hectabit.PageBurger.desktop</launchable>
+  <launchable type="desktop-id">org.hectabit.Burgernotes.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://www.hectabit.org/assets/img/pscreenshot.png</image>
@@ -40,7 +40,7 @@
   </categories>
 
   <provides>
-    <binary>pageburger</binary>
+    <binary>burgernotes</binary>
   </provides>
   <content_rating type="oars-1.1" />
 
@@ -50,8 +50,26 @@
   </branding>
 
   <releases>
+  <release version="1.1-2" date="2024-02-29">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.1</url>
+      <description>
+        <p>Release 1.1-2</p>
+          <ul>
+            <li>Migrate AppID</li>
+          </ul>
+      </description>
+    </release>
+  <release version="1.1-1" date="2024-02-28">
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.1</url>
+      <description>
+        <p>Release 1.1-1</p>
+          <ul>
+            <li>Updated website</li>
+          </ul>
+      </description>
+    </release>
   <release version="1.1" date="2024-02-26">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.1</url>
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.1</url>
       <description>
         <p>Release 1.1</p>
           <ul>
@@ -63,7 +81,7 @@
       </description>
     </release>
   <release version="1.0-3" date="2024-02-26">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-3</url>
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.0-3</url>
       <description>
         <p>Release 1.0-3</p>
           <ul>
@@ -72,7 +90,7 @@
       </description>
     </release>
   <release version="1.0-2" date="2024-02-26">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-2</url>
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.0-2</url>
       <description>
         <p>Release 1.0-2</p>
           <ul>
@@ -81,7 +99,7 @@
       </description>
     </release>
   <release version="1.0-1" date="2024-02-25">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-1</url>
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.0-1</url>
       <description>
         <p>Release 1.0-1</p>
           <ul>
@@ -91,7 +109,7 @@
       </description>
     </release>
   <release version="1.0" date="2024-02-25">
-    <url type="details">https://centrifuge.hectabit.org/HectaBit/PageBurger-App/releases/tag/1.0-1</url>
+    <url type="details">https://centrifuge.hectabit.org/HectaBit/Burgernotes-App/releases/tag/1.0-1</url>
       <description>
         <p>Initial Release</p>
           <ul>

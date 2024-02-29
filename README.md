@@ -1,3 +1,3 @@
-# PageBurger-App
+# Burgernotes-App
 
-Native desktop app for PageBurger
+Native desktop app for Burgernotes

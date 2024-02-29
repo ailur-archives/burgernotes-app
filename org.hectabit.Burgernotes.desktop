@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=PageBurger
+Name=Burgernotes
 Comment=Simple, private noting service
 Icon=org.hectabit.PageBurger
 Exec=pageburger
