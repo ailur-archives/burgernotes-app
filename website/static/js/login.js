@@ -9,6 +9,12 @@ if (localStorage.getItem("DONOTSHARE-password") !== null) {
     throw new Error();
 }
 
+let remote = localStorage.getItem("homeserverURL")
+if (remote == null) {
+    localStorage.setItem("homeserverURL", "https://notes.hectabit.org")
+    remote = "https://notes.hectabit.org"
+}
+
 let usernameBox = document.getElementById("usernameBox")
 let passwordBox = document.getElementById("passwordBox")
 let statusBox = document.getElementById("statusBox")
@@ -65,6 +71,10 @@ function showElements(yesorno) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("homeserver").innerText = "Your homeserver is: " + remote + ". "
+});
+
 signupButton.addEventListener("click", (event) => {
     if (passwordBox.classList.contains("hidden")) {
         if (usernameBox.value == "") {
@@ -109,7 +119,7 @@ signupButton.addEventListener("click", (event) => {
                 return key
             };
 
-            fetch("https://notes.hectabit.org/api/login", {
+            fetch(remote + "/api/login", {
                 method: "POST",
                 body: JSON.stringify({
                     username: username,
@@ -133,7 +143,7 @@ signupButton.addEventListener("click", (event) => {
                         }
                         else if (response.status == 401) {
                             console.log("Trying oldhash")
-                            fetch("https://notes.hectabit.org/api/login", {
+                            fetch(remote + "/api/login", {
                                 method: "POST",
                                 body: JSON.stringify({
                                     username: username,

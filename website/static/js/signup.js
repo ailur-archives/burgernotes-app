@@ -9,6 +9,12 @@ if (localStorage.getItem("DONOTSHARE-password") !== null) {
     throw new Error();
 }
 
+let remote = localStorage.getItem("homeserverURL")
+if (remote == null) {
+    localStorage.setItem("homeserverURL", "https://notes.hectabit.org")
+    remote = "https://notes.hectabit.org"
+}
+
 let usernameBox = document.getElementById("usernameBox")
 let passwordBox = document.getElementById("passwordBox")
 let statusBox = document.getElementById("statusBox")
@@ -26,6 +32,10 @@ function showElements(yesorno) {
         signupButton.classList.remove("hidden")
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("homeserver").innerText = "Your homeserver is: " + remote + ". "
+});
 
 signupButton.addEventListener("click", (event) => {
     async function doStuff() {
@@ -61,7 +71,7 @@ signupButton.addEventListener("click", (event) => {
         };
 
 
-        fetch("https://notes.hectabit.org/api/signup", {
+        fetch(remote + "/api/signup", {
             method: "POST",
             body: JSON.stringify({
                 username: username,

@@ -13,6 +13,12 @@ if (localStorage.getItem("CACHE-username") !== null) {
     document.getElementById("usernameBox").innerText = localStorage.getItem("CACHE-username")
 }
 
+let remote = localStorage.getItem("homeserverURL")
+if (remote == null) {
+    localStorage.setItem("homeserverURL", "https://notes.hectabit.org")
+    remote = "https://notes.hectabit.org"
+}
+
 function formatBytes(a, b = 2) { if (!+a) return "0 Bytes"; const c = 0 > b ? 0 : b, d = Math.floor(Math.log(a) / Math.log(1000)); return `${parseFloat((a / Math.pow(1000, d)).toFixed(c))} ${["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]}` }
 
 function truncateString(str, num) {
@@ -196,8 +202,17 @@ textMinusBox.addEventListener("click", (event) => {
 });
 
 
+function truncateString(str, num) {
+    if (str.length > num) {
+        return str.slice(0, num) + "..";
+    } else {
+        return str;
+    }
+}
+
+
 function updateUserInfo() {
-    fetch("https://notes.hectabit.org/api/userinfo", {
+    fetch(remote + "/api/userinfo", {
         method: "POST",
         body: JSON.stringify({
             secretKey: secretkey
@@ -248,7 +263,7 @@ exitThing.addEventListener("click", (event) => {
 });
 deleteMyAccountButton.addEventListener("click", (event) => {
     if (confirm("Are you REALLY sure that you want to delete your account? There's no going back!") == true) {
-        fetch("https://notes.hectabit.org/api/deleteaccount", {
+        fetch(remote + "/api/deleteaccount", {
             method: "POST",
             body: JSON.stringify({
                 secretKey: secretkey
@@ -257,7 +272,6 @@ deleteMyAccountButton.addEventListener("click", (event) => {
                 "Content-Type": "application/json; charset=UTF-8"
             }
         })
-            .then((response) => response)
             .then((response) => {
                 if (response.status == 200) {
                     window.location.href = "../logout/index.html"
@@ -271,7 +285,7 @@ sessionManagerButton.addEventListener("click", (event) => {
     optionsDiv.classList.add("hidden")
     sessionManagerDiv.classList.remove("hidden")
 
-    fetch("https://notes.hectabit.org/api/sessions/list", {
+    fetch(remote + "/api/sessions/list", {
         method: "POST",
         body: JSON.stringify({
             secretKey: secretkey
@@ -280,7 +294,6 @@ sessionManagerButton.addEventListener("click", (event) => {
             "Content-Type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response)
         .then((response) => {
             async function doStuff() {
                 let responseData = await response.json()
@@ -292,9 +305,9 @@ sessionManagerButton.addEventListener("click", (event) => {
                     let sessionRemoveButton = document.createElement("button")
                     sessionText.classList.add("w300")
                     if (responseData[i]["thisSession"] == true) {
-                        sessionText.innerText = "(current) " + truncateString(responseData[i]["device"], 18)
+                        sessionText.innerText = "(current) " + responseData[i]["device"]
                     } else {
-                        sessionText.innerText = truncateString(responseData[i]["device"], 27)
+                        sessionText.innerText = responseData[i]["device"]
                     }
                     sessionText.title = responseData[i]["device"]
                     sessionRemoveButton.innerText = "x"
@@ -311,7 +324,7 @@ sessionManagerButton.addEventListener("click", (event) => {
                     }
 
                     sessionRemoveButton.addEventListener("click", (event) => {
-                        fetch("https://notes.hectabit.org/api/sessions/remove", {
+                        fetch(remote + "/api/sessions/remove", {
                             method: "POST",
                             body: JSON.stringify({
                                 secretKey: secretkey,
@@ -321,7 +334,6 @@ sessionManagerButton.addEventListener("click", (event) => {
                                 "Content-Type": "application/json; charset=UTF-8"
                             }
                         })
-                            .then((response) => response)
                             .then((response) => {
                                 if (responseData[i]["thisSession"] == true) {
                                     window.location.replace("../logout/index.html")
@@ -362,7 +374,7 @@ function selectNote(nameithink) {
     let thingArray = Array.from(document.querySelectorAll(".noteButton")).find(el => el.id == nameithink);
     thingArray.classList.add("selected")
 
-    fetch("https://notes.hectabit.org/api/readnote", {
+    fetch(remote + "/api/readnote", {
         method: "POST",
         body: JSON.stringify({
             secretKey: secretkey,
@@ -378,7 +390,6 @@ function selectNote(nameithink) {
             noteBox.placeholder = ""
             displayError("Something went wrong... Please try again later!")
         })
-        .then((response) => response)
         .then((response) => {
             selectedNote = nameithink
             noteBox.readOnly = false
@@ -397,21 +408,28 @@ function selectNote(nameithink) {
                     updateWordCount()
                     clearTimeout(timer);
                     timer = setTimeout(() => {
+                        let encryptedTitle = "New note"
+                        if (noteBox.value.substring(0, noteBox.value.indexOf("\n")) != "") {
+                            let firstTitle = noteBox.value.substring(0, noteBox.value.indexOf("\n"));
+
+                            document.getElementById(nameithink).innerText = firstTitle
+                            encryptedTitle = CryptoJS.AES.encrypt(firstTitle, password).toString();
+                        }
                         let encryptedText = CryptoJS.AES.encrypt(noteBox.value, password).toString();
 
                         if (selectedNote == nameithink) {
-                            fetch("https://notes.hectabit.org/api/editnote", {
+                            fetch(remote + "/api/editnote", {
                                 method: "POST",
                                 body: JSON.stringify({
                                     secretKey: secretkey,
                                     noteId: nameithink,
                                     content: encryptedText,
+                                    title: encryptedTitle
                                 }),
                                 headers: {
                                     "Content-Type": "application/json; charset=UTF-8"
                                 }
                             })
-                                .then((response) => response)
                                 .then((response) => {
                                     if (response.status == 418) {
                                         displayError("You've ran out of storage... Changes will not be saved until you free up storage!")
@@ -429,7 +447,7 @@ function selectNote(nameithink) {
 }
 
 function updateNotes() {
-    fetch("https://notes.hectabit.org/api/listnotes", {
+    fetch(remote + "/api/listnotes", {
         method: "POST",
         body: JSON.stringify({
             secretKey: secretkey
@@ -438,7 +456,6 @@ function updateNotes() {
             "Content-Type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response)
         .then((response) => {
             async function doStuff() {
                 document.querySelectorAll(".noteButton").forEach((el) => el.remove());
@@ -459,11 +476,11 @@ function updateNotes() {
                     let originalTitle = bytes.toString(CryptoJS.enc.Utf8);
 
                     noteButton.id = responseData[i]["id"]
-                    noteButton.innerText = originalTitle
+                    noteButton.innerText = truncateString(originalTitle, 15)
 
                     noteButton.addEventListener("click", (event) => {
                         if (event.ctrlKey) {
-                            fetch("https://notes.hectabit.org/api/removenote", {
+                            fetch(remote + "/api/removenote", {
                                 method: "POST",
                                 body: JSON.stringify({
                                     secretKey: secretkey,
@@ -473,7 +490,6 @@ function updateNotes() {
                                     "Content-Type": "application/json; charset=UTF-8"
                                 }
                             })
-                                .then((response) => response)
                                 .then((response) => {
                                     updateNotes()
                                 })
@@ -494,38 +510,29 @@ function updateNotes() {
 updateNotes()
 
 newNote.addEventListener("click", (event) => {
-    let noteName = displayPrompt("Note name?", "E.G Shopping list", burgerFunction)
-    function burgerFunction(noteName) {
-        if (noteName != null) {
-            if (noteName.length > 21) {
-                displayError("Invalid note name: Too long (max 21 characters)");
-                return;
-            }
-
-            let encryptedName = CryptoJS.AES.encrypt(noteName, password).toString();
-            fetch("https://notes.hectabit.org/api/newnote", {
-                method: "POST",
-                body: JSON.stringify({
-                    secretKey: secretkey,
-                    noteName: encryptedName,
-                }),
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8"
-                }
-            })
-                .catch((error) => {
-                    displayError("Failed to create new note, please try again later...")
-                })
-                .then((response) => {
-                    if (response.status !== 200) {
-                        updateNotes()
-                        displayError("Failed to create new note (HTTP error code " + response.status + ")")
-                    } else {
-                        updateNotes()
-                    }
-                });
+    let noteName = "New note"
+    let encryptedName = CryptoJS.AES.encrypt(noteName, password).toString();
+    fetch(remote + "/api/newnote", {
+        method: "POST",
+        body: JSON.stringify({
+            secretKey: secretkey,
+            noteName: encryptedName,
+        }),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
         }
-    }
+    })
+        .catch((error) => {
+            displayError("Failed to create new note, please try again later...")
+        })
+        .then((response) => {
+            if (response.status !== 200) {
+                updateNotes()
+                displayError("Failed to create new note (HTTP error code " + response.status + ")")
+            } else {
+                updateNotes()
+            }
+        });
 });
 function downloadObjectAsJson(exportObj, exportName) {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
@@ -539,7 +546,7 @@ function downloadObjectAsJson(exportObj, exportName) {
 
 function exportNotes() {
     let noteExport = []
-    fetch("https://notes.hectabit.org/api/exportnotes", {
+    fetch(remote + "/api/exportnotes", {
         method: "POST",
         body: JSON.stringify({
             secretKey: secretkey
@@ -548,7 +555,6 @@ function exportNotes() {
             "Content-Type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response)
         .then((response) => {
             async function doStuff() {
                 let responseData = await response.json()
@@ -588,6 +594,16 @@ function isFirstTimeVisitor() {
     }
 }
 
+function firstNewVersion() {
+    if (document.cookie.indexOf("version=1.2") !== -1) {
+        return false;
+    } else {
+        var expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+        document.cookie = "version=1.2; expires=" + expirationDate.toUTCString() + "; path=/; SameSite=strict";
+        return true;
+    }
+}
 
 exportNotesButton.addEventListener("click", (event) => {
     exportNotesButton.innerText = "Downloading..."
@@ -598,7 +614,7 @@ removeBox.addEventListener("click", (event) => {
     if (selectedNote == 0) {
         displayError("You need to select a note first!")
     } else {
-        fetch("https://notes.hectabit.org/api/removenote", {
+        fetch(remote + "/api/removenote", {
             method: "POST",
             body: JSON.stringify({
                 secretKey: secretkey,
@@ -608,7 +624,6 @@ removeBox.addEventListener("click", (event) => {
                 "Content-Type": "application/json; charset=UTF-8"
             }
         })
-            .then((response) => response)
             .then((response) => {
                 updateNotes()
             })
@@ -620,4 +635,8 @@ removeBox.addEventListener("click", (event) => {
 
 if (isFirstTimeVisitor() && /Android|iPhone|iPod/i.test(navigator.userAgent)) {
     displayError("To use Burgernotes:\n  Swipe Right on a note to open it\n  Swipe left in the text boxes to return to notes\n  Click on a note to highlight it")
+}
+
+if (firstNewVersion()) {
+    displayError("What's new in Burgernotes 1.2?\n\nNote titles are now the first line of a note \(will not break compatibility with older notes\)\nIntroduced improved login screen\nNote titles now scroll correctly")
 }
