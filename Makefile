@@ -22,4 +22,4 @@ install: burgernotes
 	cp org.hectabit.Burgernotes.desktop $(SHAREDIR)/applications/
 	cp org.hectabit.Burgernotes.metainfo.xml $(SHAREDIR)/metainfo/
 	cp -r website $(SHAREDIR)/burgernotes/website
-        cp createwebsite.sh $(SHAREDIR)/burgernotes/
+	cp createwebsite.sh $(SHAREDIR)/burgernotes/
