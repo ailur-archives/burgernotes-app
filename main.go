@@ -1,7 +1,7 @@
 package main
 
 import (
-    "github.com/webview/webview_go"
+    "github.com/arzumify/webview_go-4.1"
     "net/http"
 )
 

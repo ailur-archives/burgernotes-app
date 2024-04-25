@@ -1,2 +1,4 @@
-github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43 h1:PwbNdNumoKba+ZgrE6ZpSluJfNJfyMuqwVyUB5+iLDI=
-github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43/go.mod h1:yE65LFCeWf4kyWD5re+h4XNvOHJEXOCOuJZ4v8l5sgk=
+github.com/arzumify/webview_go-4.1 v0.0.0-20240425153334-e12795daefc2 h1:yDtRFTJw5KVTCADMjM10fze4K+3G0uZ7gFFLkoVa8UE=
+github.com/arzumify/webview_go-4.1 v0.0.0-20240425153334-e12795daefc2/go.mod h1:5oDdOhCdYkLdjNnr/+tZO65M+oUlEa/ddnevtaIb7LM=
+github.com/arzumify/webview_go-4.1 v0.0.0-20240425153857-cdb51de8ba32 h1:BmQ/UMgzmODmCqX3wKDGfwlrPWYoL7ZLNY0bYHvhjno=
+github.com/arzumify/webview_go-4.1 v0.0.0-20240425153857-cdb51de8ba32/go.mod h1:5oDdOhCdYkLdjNnr/+tZO65M+oUlEa/ddnevtaIb7LM=

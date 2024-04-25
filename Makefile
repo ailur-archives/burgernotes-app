@@ -13,7 +13,8 @@ clean:
 
 install: burgernotes
 	mkdir -p $(DESTDIR)
-	cp burgernotes-app $(SHAREDIR)/burgernotes
+	mkdir -p $(SHAREDIR)/burgernotes
+	cp burgernotes-app $(SHAREDIR)/burgernotes/burgernotes
 	ln -sf $(SHAREDIR)/burgernotes/burgernotes $(DESTDIR)/burgernotes
 	mkdir -p $(SHAREDIR)/icons/hicolor/scalable/apps/
 	mkdir -p $(SHAREDIR)/applications/

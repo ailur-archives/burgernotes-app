@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Burgernotes
+Comment=Simple, private noting service
+Icon=org.hectabit.Burgernotes
+Exec=burgernotes
+Categories=Office;WordProcessor
