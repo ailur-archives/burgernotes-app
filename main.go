@@ -3,11 +3,16 @@ package main
 import (
     "github.com/arzumify/webview_go-4.1"
     "net/http"
+    "os"
+    "path/filepath"
 )
 
 func main() {
     go func() {
-        http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./website"))))
+        exepath, _ := os.Executable()
+        path, _ := filepath.EvalSymlinks(exepath)
+
+        http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir(filepath.Dir(path) + "/website"))))
         http.ListenAndServe("localhost:52064", nil)
     }()
 
