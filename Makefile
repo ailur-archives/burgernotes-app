@@ -1,12 +1,13 @@
 DESTDIR = /usr/bin
 SHAREDIR = /usr/share
+GO = /usr/bin/go
 
 .PHONY: all clean
 
 all: burgernotes
 
 burgernotes:
-	go build
+	$(GO) build
 
 clean:
 	rm -f burgernotes-app
